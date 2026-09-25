@@ -8,7 +8,7 @@ interface GlobalErrorProps {
 }
 
 // global-error는 루트 레이아웃을 대체하므로 자체 html/body와 전역 스타일·폰트를 직접 포함해야 한다.
-// (metadata export는 지원되지 않아 title을 React <title>로 넣는다.)
+// metadata export를 사용할 수 없어 문서 제목을 <title>로 지정한다.
 export default function GlobalError({ error, unstable_retry }: GlobalErrorProps) {
   return (
     <html lang="ko" className={`h-full antialiased ${pretendard.variable}`}>

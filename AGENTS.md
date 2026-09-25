@@ -5,11 +5,20 @@
 
 <!-- BEGIN:nextjs-agent-rules -->
 
-## Next.js 작업 전 항상 문서 확인
+# This is NOT the Next.js you know
 
-Next.js 관련 작업을 시작하기 전에 `node_modules/next/dist/docs/`에서 관련 가이드를 찾아 읽는다. 설치된 버전과 일치하는 문서를 기준으로 삼고 지원 중단 안내를 따른다.
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## 의존성 기준
+
+- Next.js 16.3.6, React / React DOM 19.3.0, TypeScript 7.0.2, Vitest / Vitest UI 5.0.1을 사용한다. React / React DOM 타입도 19.3.0으로 맞춘다.
+- TanStack Query 5.103.2, Zustand 5.0.15, dayjs 1.11.23, es-toolkit 1.52.0, tailwind-merge 3.7.0을 사용한다.
+- Playwright 1.63.0, Tailwind CSS / PostCSS 플러그인 4.3.3, oxlint 1.85.0, oxfmt 0.70.0을 사용한다. oxfmt는 공식적으로 Beta 단계다.
+- 버전 변경 시 `package.json`, `pnpm-lock.yaml`, README의 기술 스택을 함께 확인한다. 이 파일의 Next.js 자동 관리 블록 밖에 프로젝트 지침을 작성한다.
 
 ## 프로젝트 구조
 
@@ -43,4 +52,5 @@ src/
 
 - 코드 변경 후 `pnpm check`(포맷 검사·린트·단위 테스트)를 통과해야 한다.
 - 사용자 흐름에 영향을 주는 변경은 관련 E2E 테스트를 `pnpm test:e2e`로 실행한다.
+- 의존성 변경 후 `pnpm build`와 `pnpm test:e2e`도 실행한다. Playwright 업데이트 후 브라우저가 없으면 `pnpm exec playwright install chromium`으로 설치한다.
 - 커밋은 `feat|fix|docs|style|refactor|test|chore: 한국어 제목` 형식을 사용하고 본문도 한국어로 작성한다.

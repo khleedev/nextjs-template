@@ -32,6 +32,7 @@
 
     "react/react-in-jsx-scope": "off",
     "react/jsx-no-target-blank": "off",
+    "react/hook-use-state": "off",
 
     "jsx-a11y/alt-text": "warn",
     "jsx-a11y/aria-props": "warn",
@@ -57,6 +58,7 @@
     "unicorn/no-array-sort": "off",
 
     "sort-keys": "off",
+    "one-var": "off",
     "sort-imports": "off",
     "new-cap": "off",
     "capitalized-comments": "off",

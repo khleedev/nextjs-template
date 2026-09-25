@@ -4,19 +4,23 @@ Next.js 16 + React 19 기반 보일러플레이트 프로젝트.
 
 ## 기술 스택
 
-| 카테고리      | 도구                           |
-| ------------- | ------------------------------ |
-| Node.js       | 24.14.1 (LTS)                  |
-| 프레임워크    | Next.js 16, React 19           |
-| 언어          | TypeScript                     |
-| 스타일링      | Tailwind CSS v4                |
-| 폰트          | Pretendard (Variable)          |
-| 린터          | oxlint                         |
-| 포매터        | oxfmt                          |
-| 단위 테스트   | Vitest + React Testing Library |
-| E2E 테스트    | Playwright                     |
-| Git 훅        | husky + lint-staged            |
-| 패키지 매니저 | pnpm                           |
+| 카테고리      | 도구                                                        |
+| ------------- | ----------------------------------------------------------- |
+| Node.js       | 24.14.1 (LTS)                                               |
+| 프레임워크    | Next.js 16.3.6, React / React DOM 19.3.0                    |
+| 언어·타입     | TypeScript 7.0.2, React / React DOM 타입 19.3.0             |
+| 데이터·상태   | TanStack Query 5.103.2, Zustand 5.0.15                      |
+| 스타일링      | Tailwind CSS / PostCSS 플러그인 4.3.3, tailwind-merge 3.7.0 |
+| 유틸리티      | dayjs 1.11.23, es-toolkit 1.52.0                            |
+| 폰트          | Pretendard (Variable)                                       |
+| 린터          | oxlint 1.85.0                                               |
+| 포매터        | oxfmt 0.70.0                                                |
+| 단위 테스트   | Vitest / Vitest UI 5.0.1, React Testing Library             |
+| E2E 테스트    | Playwright 1.63.0                                           |
+| Git 훅        | husky + lint-staged                                         |
+| 패키지 매니저 | pnpm                                                        |
+
+정확한 의존성 범위와 설치 버전은 각각 `package.json`과 `pnpm-lock.yaml`을 기준으로 한다. oxfmt는 현재 공식적으로 Beta 단계다.
 
 ## 프로젝트 구조
 
@@ -65,6 +69,7 @@ cp .env.example .env.local
 | `pnpm format:check` | 포매팅 검사 (CI용)         |
 | `pnpm test`         | Vitest 단위 테스트 실행    |
 | `pnpm test:watch`   | Vitest watch 모드          |
+| `pnpm check`        | 포맷·린트·단위 테스트 검사 |
 | `pnpm test:e2e`     | Playwright E2E 테스트 실행 |
 
 ## 네이밍 규칙
@@ -103,3 +108,5 @@ cp .env.example .env.local
 
 - **단위 테스트**: `src/**/*.test.{ts,tsx}` — Vitest + React Testing Library
 - **E2E 테스트**: `e2e/**/*.spec.ts` — Playwright
+
+Playwright를 처음 설치하거나 업데이트한 뒤에는 `pnpm exec playwright install chromium`으로 테스트용 브라우저를 설치한다. 의존성 업데이트 후 `pnpm check`, `pnpm build`, `pnpm test:e2e`를 실행한다.
